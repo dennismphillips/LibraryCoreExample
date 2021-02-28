@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs
+/LibraryCoreExample/bin/Debug/netcoreapp3.1
+/LibraryCoreExample/obj
