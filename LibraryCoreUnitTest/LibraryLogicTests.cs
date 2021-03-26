@@ -19,6 +19,8 @@ namespace LibraryCoreUnitTest
         public void Setup()
         {
             var libraryBookValidationMock = new Mock<ILibraryQuery>();
+
+            //Sets up a Book database table
             libraryBookValidationMock.Setup(p => p.GetAllBooks()).Returns(new List<BookDataModel>() {
                 new BookDataModel() {
                     BOOK_AUTHOR = "Bob",
@@ -36,6 +38,7 @@ namespace LibraryCoreUnitTest
                 }
             });
 
+            //Sets up a user database table
             libraryBookValidationMock.Setup(p => p.GetCustomerByIdentifier(3)).Returns(new CustomerDataModel()
             {
                 CUSTOMER_EMAIL = "abc@123.com",
@@ -43,12 +46,15 @@ namespace LibraryCoreUnitTest
                 CUSTOMER_NAME = "Sally",
                 CUSTOMER_PHONE = "555-555-5555"
             });
+
+            //Add the mock database to the library logic
             myLogic = new LibraryLogic(libraryBookValidationMock.Object);
         }
         [TestMethod]
         public void TestGetAllBooks()
         {
-          List<BookResponse> bookResponses =  myLogic.GetAllBooks();
+            List<BookResponse> bookResponses =  myLogic.GetAllBooks();
+
             Assert.IsTrue(bookResponses.Count == 2);
 
             Assert.IsTrue(bookResponses[0].Author == "Bob");
