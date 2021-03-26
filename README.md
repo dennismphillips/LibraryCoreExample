@@ -3,3 +3,5 @@ This is a simple dot net core web service application that implements various fu
 Currently the web service uses a SWAGGER front end for service invokation testing, dependency injection, and dapper to manage the database connections.
 
 If you would like to run this locally, you'll need to set up a MYSQL database named "library" and update the password in the appsettings.json file. The DDL is contained in the project which will set up all of the tables you need.
+
+This project now has moq unit tests implemented. Currently only mocking the logic layer.
